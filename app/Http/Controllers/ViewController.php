@@ -34,4 +34,9 @@ class ViewController extends Controller
         $users = Usuarios::all();
         return view('user_management', compact('users')); // Ensure this view exists
     }
+
+    public function music()
+    {
+        return view('music');
+    }
 }

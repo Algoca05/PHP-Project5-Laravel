@@ -75,8 +75,6 @@ class UsersController extends Controller
 
     public function updateUserRole(Request $request, $id)
     {
-        echo 'ID: '.$id.'<br>';
-        echo 'Rol: '.$request['role'].'<br>';
         if (Auth::user()->role != 1) {
             return redirect()->route('home');
         }
@@ -85,14 +83,15 @@ class UsersController extends Controller
             'role' => 'required|integer|in:1,2',
         ]);
 
-        $user = Usuarios::where('id', $id)->first();
-        // if (!$user) {
-        //     return redirect()->route('user_management')->withErrors(['user' => 'User not found']);
-        // }
-        $user->role = $request['role'];
-        $user->update();
+        $user = Usuarios::find($id);
+        if (!$user) {
+            return redirect()->route('user_management')->withErrors(['user' => 'Usuario no encontrado']);
+        }
 
-        return redirect()->route('user_management')->with('success', 'Role updated successfully');
+        $user->role = $request['role'];
+        $user->save();
+
+        return redirect()->route('user_management')->with('success', 'Rol actualizado correctamente');
     }
 
     public function deleteUser($id)

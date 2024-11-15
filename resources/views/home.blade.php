@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -13,10 +15,10 @@
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Inicio</a>
+                <a class="nav-link" href="{{ route('home') }}">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Opción 1</a>
+                <a class="nav-link" href="{{ route('music') }}">Musica</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Opción 2</a>

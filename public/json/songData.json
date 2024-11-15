@@ -1,0 +1,196 @@
+{
+    "songs": [
+      {
+        "src": "src/music/QuevedoDURO.m4a",
+        "cover": "src/img/quevedoDuro.jpg",
+        "title": "DURO",
+        "artist": "Quevedo"
+      },
+      {
+        "src": "src/music/queveoNonstop.m4a",
+        "cover": "src/img/quevedoNonstop.jpg",
+        "title": "Nonstop",
+        "artist": "Quevedo"
+      },
+      {
+        "src": "src/music/quevedoCuentale.m4a",
+        "cover": "src/img/quevedoCuentale.jpg",
+        "title": "Cuéntale",
+        "artist": "Quevedo"
+      },
+      {
+        "src": "src/music/BzrpMusicSessionsVol58.mp3",
+        "cover": "src/img/noFoto.png",
+        "title": "Bzrp Music Sessions, Vol. 58",
+        "artist": "Bizarrap & Young Miko"
+      },
+      {
+        "src": "src/music/ActIIDateAt8.mp3",
+        "cover": "src/img/noFoto.png",
+        "title": "Act II: Date @ 8",
+        "artist": "4Batz"
+      },
+      {
+        "src": "src/music/BadBitty.mp3",
+        "cover": "src/img/noFoto.png",
+        "title": "Bad Bitty",
+        "artist": "J.P."
+      },
+      {
+        "src": "src/music/SavingFlowers.mp3",
+        "cover": "src/img/noFoto.png",
+        "title": "Saving Flowers",
+        "artist": "Salute feat. Rina Sawayama"
+      },
+      {
+        "src": "src/music/AndCountin.mp3",
+        "cover": "src/img/noFoto.png",
+        "title": "And Countin'",
+        "artist": "Scotty McCreery"
+      },
+      {
+        "src": "src/music/PaintTheTownRed.mp3",
+        "cover": "src/img/noFoto.png",
+        "title": "Paint The Town Red",
+        "artist": "Doja Cat"
+      },
+      {
+        "src": "src/music/LovinOnMe.mp3",
+        "cover": "src/img/noFoto.png",
+        "title": "Lovin On Me",
+        "artist": "Jack Harlow"
+      },
+      {
+        "src": "src/music/Euphoria.mp3",
+        "cover": "src/img/noFoto.png",
+        "title": "Euphoria",
+        "artist": "Kendrick Lamar"
+      },
+      {
+        "src": "src/music/NotLikeUs.mp3",
+        "cover": "src/img/noFoto.png",
+        "title": "Not Like Us",
+        "artist": "Kendrick Lamar"
+      },
+      {
+        "src": "src/music/MeetTheGrahams.mp3",
+        "cover": "src/img/noFoto.png",
+        "title": "Meet The Grahams",
+        "artist": "Kendrick Lamar"
+      },
+      {
+        "src": "src/music/Flowers.mp3",
+        "cover": "src/img/noFoto.png",
+        "title": "Flowers",
+        "artist": "Miley Cyrus"
+      },
+      {
+        "src": "src/music/AntiHero.mp3",
+        "cover": "src/img/noFoto.png",
+        "title": "Anti-Hero",
+        "artist": "Taylor Swift"
+      },
+      {
+        "src": "src/music/BlindingLights.mp3",
+        "cover": "src/img/noFoto.png",
+        "title": "Blinding Lights",
+        "artist": "The Weeknd"
+      },
+      {
+        "src": "src/music/Levitating.mp3",
+        "cover": "src/img/noFoto.png",
+        "title": "Levitating",
+        "artist": "Dua Lipa"
+      },
+      {
+        "src": "src/music/Good4U.mp3",
+        "cover": "src/img/noFoto.png",
+        "title": "Good 4 U",
+        "artist": "Olivia Rodrigo"
+      },
+      {
+        "src": "src/music/Stay.mp3",
+        "cover": "src/img/noFoto.png",
+        "title": "Stay",
+        "artist": "The Kid LAROI & Justin Bieber"
+      },
+      {
+        "src": "src/music/quevedoAhoraQue.m4a",
+        "cover": "src/img/quevedoAhoraQue.jpg",
+        "title": "Ahora Que",
+        "artist": "Quevedo"
+      }
+    ],
+    "radios": [
+      {
+        "frequency": "101.1",
+        "title": "Los 40",
+        "src": "http://stream.los40.com/los40",
+        "cover": "src/img/noFoto.png",
+        "id": 1
+      },
+      {
+        "frequency": "102.5",
+        "title": "Cadena SER",
+        "src": "http://stream.cadenaser.com/cadenaser",
+        "cover": "src/img/noFoto.png",
+        "id": 2
+      },
+      {
+        "frequency": "103.9",
+        "title": "Kiss FM",
+        "src": "https://www.radio-espana.es/kiss-fm",
+        "cover": "src/img/noFoto.png",
+        "id": 3
+      },
+      {
+        "frequency": "104.3",
+        "title": "BBC World Service",
+        "src": "https://www.bbc.co.uk/worldserviceradio",
+        "cover": "src/img/noFoto.png",
+        "id": 4
+      },
+      {
+        "frequency": "105.7",
+        "title": "The Sean Hannity Show",
+        "src": "https://www.iheart.com/live/the-sean-hannity-show-247/",
+        "cover": "src/img/noFoto.png",
+        "id": 5
+      },
+      {
+        "frequency": "106.1",
+        "title": "Morning Edition (NPR)",
+        "src": "https://www.npr.org/programs/morning-edition/",
+        "cover": "src/img/noFoto.png",
+        "id": 6
+      },
+      {
+        "frequency": "107.5",
+        "title": "Intelligence for Your Life with John Tesh",
+        "src": "https://www.tesh.com/radio/",
+        "cover": "src/img/noFoto.png",
+        "id": 7
+      },
+      {
+        "frequency": "98.3",
+        "title": "Radio Mirchi",
+        "src": "http://peridot.streamguys.com:7150/Mirchy",
+        "cover": "src/img/noFoto.png",
+        "id": 8
+      },
+      {
+        "frequency": "106.7",
+        "title": "Rock Antenne",
+        "src": "http://play.rockantenne.de/rockantenne.m3u",
+        "cover": "src/img/noFoto.png",
+        "id": 9
+      },
+      {
+        "frequency": "110.7",
+        "title": "KFI AM 640",
+        "src": "https://kfiam640.iheart.com/",
+        "cover": "src/img/noFoto.png",
+        "id": 10
+      }
+    ]
+  }
