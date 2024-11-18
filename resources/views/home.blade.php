@@ -9,7 +9,7 @@
 </head>
 <body>
 <header class="text-center">
-    <h1>Bienvenido a la Página de Inicio</h1>
+    <h1>Bienvenido a PapuMusic {{ Auth::user()->name }}</h1>
 </header>
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top w-100">
     <div class="collapse navbar-collapse">

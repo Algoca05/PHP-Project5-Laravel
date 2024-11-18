@@ -70,6 +70,7 @@
             <div id="playlistDiv">
                 <h1>PLAYLIST</h1>
                 <input type="text" id="searchBar" placeholder="Search for a song...">
+                <div id="playlistContainer"></div> <!-- Added this line -->
             </div>
             <div id="radioStationDiv">
                 <h1>RADIO</h1>

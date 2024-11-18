@@ -108,13 +108,31 @@ function play() {
 }
 
 function loadPlaylist() {
+    const playlistContainer = document.getElementById('playlistContainer');
+    playlistContainer.innerHTML = ''; // Clear existing playlist
     for (let i = 0; i < songs.length; i++) {
         let song = document.createElement('div');
         song.className = 'song';
         song.innerHTML = '<h2 onclick="loadSong(' + i + ')">' + songs[i].artist + ' - ' + songs[i].title + '</h2>';
-        document.getElementById('playlistDiv').appendChild(song);
+        playlistContainer.appendChild(song);
     }
 }
+
+document.getElementById('searchBar').addEventListener('input', function(event) {
+    const searchTerm = event.target.value.toLowerCase();
+    const filteredSongs = songs.filter(song => 
+        song.artist.toLowerCase().includes(searchTerm) || 
+        song.title.toLowerCase().includes(searchTerm)
+    );
+    const playlistContainer = document.getElementById('playlistContainer');
+    playlistContainer.innerHTML = ''; // Clear existing playlist
+    filteredSongs.forEach((song, index) => {
+        let songElement = document.createElement('div');
+        songElement.className = 'song';
+        songElement.innerHTML = '<h2 onclick="loadSong(' + index + ')">' + song.artist + ' - ' + song.title + '</h2>';
+        playlistContainer.appendChild(songElement);
+    });
+});
 
 function loadRadio() {
     if (radio && radio.length > 0) {

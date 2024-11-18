@@ -5,15 +5,13 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Auth; // Add this line
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('/', [ViewController::class, 'index']);
 
 Route::get('/register', [ViewController::class, 'register']);
 
-Route::post('/register', [UsersController::class, 'postUsers'])->name('users.register');
+Route::post('/register', [UsersController::class, 'register'])->name('users.register');
 
 Route::get('/login', [ViewController::class, 'login']);
 

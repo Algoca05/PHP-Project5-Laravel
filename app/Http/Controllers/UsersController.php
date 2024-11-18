@@ -10,7 +10,7 @@ use App\Models\User; // Ensure you have the User model imported
 
 class UsersController extends Controller
 {
-    public function postUsers(Request $request)
+    public function register(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -31,8 +31,10 @@ class UsersController extends Controller
             $user->name = $request['name'];
             $user->email = $request->input('email');
             $user->password = Hash::make($request['password']);
+            $user->role = 2;
             $user->save();
-            return view('login');
+            Auth::login($user);
+            return view('home');
         } catch (\Illuminate\Database\QueryException $e) {
             if ($e->errorInfo[1] == 1062) { // Duplicate entry error code
                 return back()->withErrors(['email' => 'El correo electrónico ya está registrado.'])->with('alert', 'El correo electrónico ya está registrado.');
@@ -70,7 +72,7 @@ class UsersController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login'); // Update this line to redirect to the correct login route
+        return redirect('/'); // Update this line to redirect to the correct login route
     }
 
     public function updateUserRole(Request $request, $id)
