@@ -93,21 +93,21 @@
                     @csrf
                     <div class="form-group">
                         <label for="name">Nombre</label>
-                        <input type="text" class="form-control" id="name" name="name" >
+                        <input type="text" class="form-control" id="name" name="name" required maxlength="255">
                         @if ($errors->has('name'))
                             <div class="alert alert-danger">{{ $errors->first('name') }}</div>
                         @endif
                     </div>
                     <div class="form-group">
                         <label for="email">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="email" name="email" >
+                        <input type="email" class="form-control" id="email" name="email" required maxlength="255">
                         @if ($errors->has('email'))
                             <div class="alert alert-danger">{{ $errors->first('email') }}</div>
                         @endif
                     </div>
                     <div class="form-group">
                         <label for="password">Contraseña</label>
-                        <input type="password" class="form-control" id="password" name="password" >
+                        <input type="password" class="form-control" id="password" name="password" required minlength="8">
                         @if ($errors->has('password'))
                             <div class="alert alert-danger">{{ $errors->first('password') }}</div>
                         @endif
