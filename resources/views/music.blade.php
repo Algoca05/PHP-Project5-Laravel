@@ -10,7 +10,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top w-100">
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="nav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">Inicio</a>
@@ -70,14 +70,15 @@
             <div id="playlistDiv">
                 <h1>PLAYLIST</h1>
                 <input type="text" id="searchBar" placeholder="Search for a song...">
-                <div id="playlistContainer"></div> <!-- Added this line -->
+                <div id="playlistContainer"></div>
             </div>
-            <div id="radioStationDiv">
-                <h1>RADIO</h1>
+            <div id="moodDiv">
+                <h1>MOODS</h1>
+                <div id="moodContainer"></div>
             </div>
         </div>
     </div>
-    <footer>
+    <footer id="footer">
         <img id="logoAbajo" src="./src/img/logo.jpeg" alt="Logo">
         <span style="text-align: start;">© PapuMusic 2024 - 2025</span>
     </footer>

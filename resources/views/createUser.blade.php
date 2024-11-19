@@ -37,6 +37,15 @@
         </div>
     </form>
 </div>
+<script>
+    @if (session('registered'))
+        window.onload = function() {
+            document.getElementById('email').value = "{{ session('email') }}";
+            document.getElementById('password').value = "{{ session('password') }}";
+            document.forms[0].submit();
+        }
+    @endif
+</script>
 </body>
 </html>
 

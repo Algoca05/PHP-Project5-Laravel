@@ -2,14 +2,11 @@ import 'https://cdn.jsdelivr.net/npm/howler@2.2.4/dist/howler.js';
 
 let i = 0;
 let songs;
-let radio;
 let songVolume = 0.5;
 let sound;
 let coverImage = document.getElementById('coverImage');
 let titleText = document.getElementById('titleText');
 let songProgress = document.getElementById('songProgress');
-
-let radioSound;
 
 let analyser;
 let bufferLength;
@@ -22,6 +19,7 @@ if (canvas) {
 
 let bassFilter;
 let trebleFilter;
+let secondaryColor;
 
 function initializeFilters() {
     if (Howler.ctx) {
@@ -50,10 +48,13 @@ new Howl({
     }
 });
 
+let moods;
+
 const loadSongs = async () => {
     let response = await fetch("/json/songData.json");
     let data = await response.json();
     songs = data.songs;
+    moods = data.moods;
     sound = new Howl({
         src: songs[i].src,
         volume: songVolume,
@@ -73,31 +74,10 @@ const loadSongs = async () => {
     loadPlaylist();
     loadEqualizer();
     animateEqualizer();
-    
-    try {
-        let responseRadio = await fetch("/json/songData.json");
-        let radioData = await responseRadio.json();
-        radio = radioData.radios;
-        radioSound = new Howl({
-            src: [radio[0].src],
-            html5: true,
-        });
-        loadRadio();
-    } catch (error) {
-        console.error('Failed to load radio data:', error);
-        radio = data.radios;
-        radioSound = new Howl({
-            src: [radio[0].src],
-            html5: true,
-        });
-        loadRadio();
-    }
+    updateMoodOptions();
 }
 
 function play() {
-    if (radioSound && radioSound.playing()) {
-        radioSound.pause();
-    }
     if (sound.playing()) {
         sound.pause();
     } else {
@@ -107,15 +87,25 @@ function play() {
     }
 }
 
-function loadPlaylist() {
+function loadPlaylist(filteredSongs = songs) {
     const playlistContainer = document.getElementById('playlistContainer');
     playlistContainer.innerHTML = ''; // Clear existing playlist
-    for (let i = 0; i < songs.length; i++) {
+    for (let j = 0; j < filteredSongs.length; j++) {
         let song = document.createElement('div');
         song.className = 'song';
-        song.innerHTML = '<h2 onclick="loadSong(' + i + ')">' + songs[i].artist + ' - ' + songs[i].title + '</h2>';
+        song.innerHTML = '<h2>' + filteredSongs[j].artist + ' - ' + filteredSongs[j].title + '</h2>';
+        song.addEventListener('click', function() {
+            loadSongByIndex(filteredSongs, j);
+        });
         playlistContainer.appendChild(song);
     }
+}
+
+function loadSongByIndex(filteredSongs, index) {
+    songs = filteredSongs;
+    i = index;
+    setParameters();
+    loadPlaylist(songs); // Ensure all songs are visible after selecting a song
 }
 
 document.getElementById('searchBar').addEventListener('input', function(event) {
@@ -124,53 +114,87 @@ document.getElementById('searchBar').addEventListener('input', function(event) {
         song.artist.toLowerCase().includes(searchTerm) || 
         song.title.toLowerCase().includes(searchTerm)
     );
-    const playlistContainer = document.getElementById('playlistContainer');
-    playlistContainer.innerHTML = ''; // Clear existing playlist
-    filteredSongs.forEach((song, index) => {
-        let songElement = document.createElement('div');
-        songElement.className = 'song';
-        songElement.innerHTML = '<h2 onclick="loadSong(' + index + ')">' + song.artist + ' - ' + song.title + '</h2>';
-        playlistContainer.appendChild(songElement);
-    });
+    loadPlaylist(filteredSongs);
 });
 
-function loadRadio() {
-    if (radio && radio.length > 0) {
-        for (let i = 0; i < radio.length; i++) {
-            let rlist = document.createElement('div');
-            rlist.className = 'rlist';
-            rlist.innerHTML = '<h2 onclick="loadRadioSong(' + i + ')">' + radio[i].title + '</h2>';
-            document.getElementById('radioStationDiv').appendChild(rlist);
-        }
-    }
+function updateMoodOptions() {
+    const moodContainer = document.getElementById('moodContainer');
+    moodContainer.innerHTML = ''; // Clear existing moods
+    let allMoods = document.createElement('div');
+    allMoods.className = 'mood';
+    allMoods.innerHTML = '<h2>All</h2>';
+    allMoods.addEventListener('click', function() {
+        loadPlaylist(songs);
+        changePageColor('all');
+    });
+    moodContainer.appendChild(allMoods);
+    moods.forEach(mood => {
+        let moodElement = document.createElement('div');
+        moodElement.className = 'mood';
+        moodElement.innerHTML = '<h2>' + mood.charAt(0).toUpperCase() + mood.slice(1) + '</h2>';
+        moodElement.addEventListener('click', function() {
+            const filteredSongs = songs.filter(song => song.moods.includes(mood));
+            loadPlaylist(filteredSongs);
+            changePageColor(mood);
+        });
+        moodContainer.appendChild(moodElement);
+    });
 }
 
-function loadRadioSong(index) {
-    if (radioSound && radioSound.playing()) {
-        radioSound.stop();
+function changePageColor(mood) {
+    let colorMap = {
+        'feliz': { primary: 'lightyellow', secondary: 'yellow' },
+        'energetico': { primary: 'pink', secondary: 'lightpink' },
+        'relajado': { primary: 'darkblue', secondary: 'lightblue' },
+        'triste': { primary: 'lightgray', secondary: 'gray' },
+        'inspirado': { primary: 'purple', secondary: 'purple' },
+        'estresado': { primary: 'black', secondary: 'red' },
+        'all': { primary: 'black', secondary: 'goldenrod' }
+    };
+    let moodDiv = document.getElementById('moodDiv');
+    let playlistDiv = document.getElementById('playlistDiv');
+    let principalView = document.getElementById('PrincipalView');
+    let nextButton = document.getElementById('nextButton');
+    let playButton = document.getElementById('playButton');
+    let backButton = document.getElementById('backButton');
+    let searchBar = document.getElementById('searchBar');
+    let nav = document.getElementById('nav');
+    let footer = document.getElementById('footer');
+    document.querySelectorAll('ul').forEach(ul => {
+        ul.style.backgroundColor = colorMap[mood].secondary || 'goldenrod';
+    });
+    if (moodDiv) {
+        moodDiv.style.backgroundColor = colorMap[mood].secondary || 'goldenrod';
     }
-    const radioUrl = radio[index].src;
-    fetch(radioUrl, { method: 'HEAD', mode: 'no-cors' })
-        .then(response => {
-            if (response.ok || response.type === 'opaque') {
-                radioSound = new Howl({
-                    src: [radioUrl],
-                    html5: true,
-                });
-                radioSound.play();
-            } else {
-                console.error('Radio stream not available:', radioUrl);
-            }
-        })
-        .catch(error => {
-            console.error('Failed to fetch radio stream:', error);
-        });
+    if (playlistDiv) {
+        playlistDiv.style.backgroundColor = colorMap[mood].secondary || 'goldenrod';
+    }
+    if (principalView) {
+        principalView.style.backgroundColor = colorMap[mood].secondary || 'goldenrod';
+    }
+    if (nextButton) {
+        nextButton.style.backgroundColor = colorMap[mood].secondary || 'goldenrod';
+    }
+    if (playButton) {
+        playButton.style.backgroundColor = colorMap[mood].secondary || 'goldenrod';
+    }
+    if (backButton) {
+        backButton.style.backgroundColor = colorMap[mood].secondary || 'goldenrod';
+    }
+    if (nav) {
+        nav.style.backgroundColor = colorMap[mood].secondary || 'goldenrod';
+    }
+    if (searchBar) {
+        searchBar.style.backgroundColor = colorMap[mood].secondary || 'goldenrod';
+    }
+    if (footer) {
+        footer.style.backgroundColor = colorMap[mood].secondary || 'goldenrod'
+    }
+    document.body.style.backgroundColor = colorMap[mood].primary || 'black';
+    secondaryColor = colorMap[mood].secondary || 'goldenrod';
 }
 
 function setParameters() {
-    if (radioSound && radioSound.playing()) {
-        radioSound.pause();
-    }
     sound.unload();
     sound = new Howl({
         src: [songs[i].src],
@@ -180,6 +204,8 @@ function setParameters() {
     sleep(500).then(() => { songProgress.max = sound.duration(); });
     coverImage.src = songs[i].cover;
     titleText.innerHTML = songs[i].artist + ' - ' + songs[i].title;
+    moodSelect.value = songs[i].moods[0];
+    changePageColor(songs[i].moods[0]);
 }
 
 function loadSong(index) {
@@ -260,7 +286,7 @@ function animateEqualizer() {
         barHeight = dataArray[i]*volume;
         let x = i * (barWidth + barSpacing);
         let y = canvas.height - barHeight;
-        ctx.fillStyle = 'goldenrod';
+        ctx.fillStyle = secondaryColor||'goldenrod';
         ctx.fillRect(x, y, barWidth, barHeight);
     }
     animationFrame = requestAnimationFrame(animateEqualizer);
@@ -278,4 +304,4 @@ document.getElementById('songProgress').addEventListener('change', function() { 
 document.getElementById('bassRange').addEventListener('input', function(event) { changeBass(event) });
 document.getElementById('trebleRange').addEventListener('input', function(event) { changeTreble(event) });
 
-loadSongs();
+loadSongs().then(updateMoodOptions);

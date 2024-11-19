@@ -79,7 +79,7 @@
 </div>
 
 <!-- Register Modal -->
-<div class="modal fade @if ($errors->has('name') || $errors->has('email') || $errors->has('password')) show @endif" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="RegisterModalLabel" aria-hidden="true" @if ($errors->has('name') || $errors->has('email') || $errors->has('password')) style="display: block;" @endif>
+<div class="modal fade @if ($errors->has('name') || $errors->has('email') || $errors->has('password')) show @endif" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="RegisterModalLabel" aria-hidden="true" @if ($errors->has('name') || $errors->has('email') || $errors->has('password')) @endif>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

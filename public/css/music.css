@@ -55,14 +55,14 @@ nav ul a:hover {
 #PrincipalView{
     width: 50%;
 }
- #playlistDiv, #radioStationDiv, #PrincipalView {
+ #playlistDiv, #moodDiv, #PrincipalView {
     border: 1px solid #ccc;
     padding: 20px;
     
     background-color: goldenrod;
     max-height: 800px;
 }
-#playlistDiv, #radioStationDiv {
+#playlistDiv, #moodDiv {
     width: 48%;
     text-align: center;
     overflow-y: scroll; /* Enable vertical scrolling */
@@ -127,9 +127,7 @@ input[type="range"] {
         
 }
 #backButton:hover, #nextButton:hover, #playButton:hover {
-    background-color: black;
-    color: goldenrod;
-    border: 5px solid goldenrod;
+    cursor: pointer;
 }
 
 #coverImage{
