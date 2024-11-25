@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+@extends('layouts.layout')
+
+@section('title', 'Iniciar Sesión')
+
+@section('content')
 <div class="container">
     <h2>Iniciar Sesión</h2>
     
@@ -35,5 +32,4 @@
         <a href="/register" class="btn btn-primary btn-xs ml-2">Registrarse</a>
     </form>
 </div>
-</body>
-</html>
+@endsection
