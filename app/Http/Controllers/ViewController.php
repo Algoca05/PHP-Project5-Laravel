@@ -25,6 +25,9 @@ class ViewController extends Controller
     {
         return view('home');
     }
+    public function reloj(){
+        return view('reloj');
+    }
     public function userManagement()
     {
         if (Auth::user()->role != 1) {
@@ -38,5 +41,10 @@ class ViewController extends Controller
     public function music()
     {
         return view('music');
+    }
+
+    public function tamagotchi()
+    {
+        return view('tamagotchi');
     }
 }

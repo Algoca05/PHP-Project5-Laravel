@@ -17,7 +17,7 @@
                     <a class="nav-link" href="{{ route('music') }}">Musica</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Opción 2</a>
+                <a class="nav-link" href="{{ route('reloj') }}">Reloj Interactivo</a>
                 </li>
             </ul>
             <header class="text-center">

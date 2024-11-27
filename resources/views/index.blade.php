@@ -20,7 +20,7 @@
                 <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Musica</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Opción 2</a>
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Reloj Interactivo</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">

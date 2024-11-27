@@ -23,6 +23,10 @@ Route::post('/logout', [UsersController::class, 'logout'])->name('logout');
 
 Route::get('/music', [ViewController::class, 'music'])->name('music');
 
+Route::get('/reloj', [ViewController::class, 'reloj'])->name('reloj');
+
+Route::get('/tamagotchi', [ViewController::class, 'tamagotchi'])->name('tamagotchi');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/user-management', [ViewController::class, 'userManagement'])->name('user_management');
     Route::post('/admin/user-management/{id}', [UsersController::class, 'updateUserRole'])->name('update_user_role');

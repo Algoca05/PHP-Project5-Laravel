@@ -38,7 +38,8 @@
     </form>
 </div>
 <script>
-    @if (session('registered'))
+    @if 
+    (session('registered'))
         window.onload = function() {
             document.getElementById('email').value = "{{ session('email') }}";
             document.getElementById('password').value = "{{ session('password') }}";
