@@ -3,7 +3,7 @@
     "type": "module",
     "name": "nombre-de-tu-proyecto",
     "version": "1.0.0",
-    "description": "Descripci\u00f3n de tu proyecto",
+    "description": "Descripción de tu proyecto",
     "scripts": {
         "build": "vite build",
         "dev": "npm run development",
@@ -15,6 +15,7 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000"
     },
     "devDependencies": {
+        "@babel/preset-react": "^7.26.3",
         "@popperjs/core": "^2.11.6",
         "@vitejs/plugin-react": "^4.2.0",
         "autoprefixer": "^10.4.20",
@@ -27,7 +28,9 @@
         "postcss": "^8.1.14",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
+        "resolve-url-loader": "^5.0.0",
         "sass": "^1.56.1",
+        "sass-loader": "^12.1.0",
         "tailwindcss": "^2.0.1",
         "vite": "^5.0"
     },
